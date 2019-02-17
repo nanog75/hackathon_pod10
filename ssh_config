@@ -1,0 +1,6 @@
+host *pod10.cloud.tesuto.com
+    StrictHostKeyChecking no
+    user tesuto
+    IdentityFile /root/.ssh/nanog75.key
+    IdentitiesOnly yes
+    LogLevel quiet
