@@ -1,0 +1,10 @@
+domain: hackathon.pod10.cloud.tesuto.com
+yang_repo_location: files/yang
+ansible_user: "rtrdev"
+ansible_password: "nanog75sf"
+netconf_port: 830
+grpc_port: 57777
+ansible_host: "{{inventory_hostname}}.{{domain}}"
+ansible_sudo_pass: "nanog75sf"
+ansible_port: 57722
+local_as: 65000

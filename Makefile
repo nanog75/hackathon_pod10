@@ -1,5 +1,5 @@
 
-DOCKER_TAG = 0.1
+DOCKER_TAG = 0.2
 
 build:
 	docker build -t nanog75/pod10:$(DOCKER_TAG) .

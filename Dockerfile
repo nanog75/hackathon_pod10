@@ -1,7 +1,10 @@
-FROM python:3.6.8-stretch
+FROM ydkdev/ydk-gen
 
 RUN mkdir /source
 COPY . /source
+
+RUN apt-get update
+RUN apt-get -y install sshpass
 
 RUN mkdir /root/.ssh
 COPY ssh_config /root/.ssh/config

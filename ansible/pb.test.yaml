@@ -1,0 +1,45 @@
+---
+- hosts: rtr
+  gather_facts: no
+  become: yes
+  tasks:
+
+    # - pip:
+    #     name: docker-py
+
+  # - name: Copy launch_openr script to rtr
+  #   copy:
+  #     src: "inv.ini"
+  #     dest: "/misc/app_host/"
+  #     owner: root 
+  #     group: root 
+  #     mode: a+x 
+
+    - name: Create host file on Router
+      template:
+        src: templates/rtr_host.j2
+        dest: /misc/app_host/hosts_{{inventory_hostname}}
+
+    - name: Create Start Script on Router
+      template:
+        src: templates/run_openr.j2
+        dest: /misc/app_host/run_openr.sh
+        
+      
+    # - name: Start OpenR container
+    #   docker_container:
+    #     image: akshshar/openr-xr 
+    #     command: /root/run_openr.sh
+    #     restart: yes
+    #     name: openr
+    #     volumes:
+    #        - /var/run/netns:/var/run/netns
+    #        - /misc/app_host:/root 
+    #        - "/misc/app_host/hosts_{{inventory_hostname}}:/etc/hosts"
+    #     hostname: "{{ inventory_hostname }}"
+    #     docker_host: "unix:///misc/app_host/docker.sock"
+    
+
+
+# docker run -itd --cap-add=SYS_ADMIN --cap-add=NET_ADMIN   --hostname rtr1 akshshar/openr-xr /root/run_openr_rtr1.sh
+
